@@ -5,6 +5,7 @@ from typing import Optional, Union
 from pathlib import Path
 import pandas as pd
 import joblib
+from fastapi.middleware.cors import CORSMiddleware
 
 
 # --------------------------------------------------
@@ -15,6 +16,13 @@ app = FastAPI(
     title="Hotel Booking Cancellation Prediction API",
     description="Predict whether a hotel booking will be cancelled",
     version="1.0.0"
+)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
